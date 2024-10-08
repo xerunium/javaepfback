@@ -18,8 +18,13 @@ public class Contenir {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Question id_question;
+    private Question question;
     @ManyToOne
-    private Choix id_choix;
-    private boolean bonne_rep;
+    private Choix choix;
+    private boolean isAnswer;
+
+    public Contenir(Choix choix, boolean isAnswer) {
+        this.choix = choix;
+        this.isAnswer = isAnswer;
+    }
 }

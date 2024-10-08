@@ -21,4 +21,9 @@ public class Question {
     private int nb_choix;
     @OneToMany
     private List<Contenir> contenirs;
+
+    public Question(int nb_choix, List<Contenir> contenirs) {
+        this.nb_choix = nb_choix;
+        this.contenirs = contenirs;
+    }
 }
