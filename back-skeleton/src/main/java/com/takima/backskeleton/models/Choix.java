@@ -18,5 +18,6 @@ public class Choix {
     private Long id;
     private byte[] image;
     private String description;
-    private long id_categorie;
+    @ManyToOne
+    private Categorie categorie;
 }
