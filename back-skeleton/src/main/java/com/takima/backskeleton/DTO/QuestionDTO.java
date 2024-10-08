@@ -9,5 +9,5 @@ import java.util.List;
 @Getter
 public class QuestionDTO {
     private List<String> reponses;
-    private String image;
+    private byte[] image;
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface QuestionMapper {
     public static QuestionDTO toDTO(Question question){
         ArrayList<String> description_reponses = new ArrayList<>();
-        String image ="error";
+        byte[] image =null;
         for(Contenir contenir : question.getContenirs()) {
             description_reponses.add(contenir.getChoix().getDescription());
             if(contenir.isAnswer()){
