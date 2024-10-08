@@ -17,7 +17,7 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private int nb_choix;
     @OneToMany
     private List<Contenir> contenirs;

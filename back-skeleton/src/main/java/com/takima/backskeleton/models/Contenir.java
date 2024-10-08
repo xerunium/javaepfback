@@ -16,9 +16,10 @@ public class Contenir {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @ManyToOne
     private Question id_question;
     @ManyToOne
     private Choix id_choix;
+    private boolean bonne_rep;
 }
