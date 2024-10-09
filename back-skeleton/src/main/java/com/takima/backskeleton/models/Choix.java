@@ -1,13 +1,11 @@
 package com.takima.backskeleton.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +14,7 @@ public class Choix {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Lob
     private byte[] image;
     private String description;
     @ManyToOne

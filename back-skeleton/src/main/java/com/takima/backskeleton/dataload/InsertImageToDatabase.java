@@ -52,7 +52,7 @@ public class InsertImageToDatabase {
             connection = DriverManager.getConnection(url, user, password);
 
             // Requête d'insertion SQL
-            String sql = "INSERT INTO choix (id, id_categorie, description, image) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO choix (id, categorie_id, description, image) VALUES (?, ?, ?, ?)";
             String sql_categorie = "INSERT INTO categorie (id, nom_categorie) VALUES (?, ?)";
 
             pstmtt = connection.prepareStatement(sql_categorie);

@@ -9,11 +9,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface ChoixDao extends CrudRepository<Choix, Integer> {
+public interface ChoixDao extends JpaRepository<Choix, Long> {
 
     @Query("SELECT c FROM Choix c WHERE c.categorie = :categorie AND c.id != :choixId ORDER BY function('RAND')")
     List<Choix> findIncorrectChoixByCategorie(@Param("categorie") Categorie categorie,
                                               @Param("choixId") Long choixId);
+
+    Optional<Choix> findByDescription(String description);
 }

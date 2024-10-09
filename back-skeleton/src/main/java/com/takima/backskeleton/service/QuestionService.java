@@ -37,7 +37,7 @@ public class QuestionService {
     public Question generateQuestion(int nbrChoix){
         long totalChoix = choixDao.count();
         int idChoixCorrect = randomChoix((int) totalChoix);
-        Optional<Choix> choixCorrect = choixDao.findById(idChoixCorrect);
+        Optional<Choix> choixCorrect = choixDao.findById((long) idChoixCorrect);
         return createQuestion(nbrChoix, choixCorrect);
     }
 
