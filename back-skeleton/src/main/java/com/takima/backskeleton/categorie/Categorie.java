@@ -1,21 +1,18 @@
-package com.takima.backskeleton.models;
+package com.takima.backskeleton.categorie;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Choix {
+@ToString
+public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String image;
-    private String description;
-    @ManyToOne
-    private Categorie categorie;
+    private String nom_categorie;
 }

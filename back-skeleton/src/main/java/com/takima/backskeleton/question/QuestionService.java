@@ -1,16 +1,11 @@
-package com.takima.backskeleton.service;
+package com.takima.backskeleton.question;
 
-import com.takima.backskeleton.DAO.ChoixDao;
-import com.takima.backskeleton.DAO.QuestionDao;
-import com.takima.backskeleton.models.Choix;
-import com.takima.backskeleton.models.Contenir;
-import com.takima.backskeleton.models.Question;
+import com.takima.backskeleton.choix.ChoixDao;
+import com.takima.backskeleton.choix.Choix;
+import com.takima.backskeleton.contenir.Contenir;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class QuestionService {
@@ -51,18 +46,18 @@ public class QuestionService {
             Question savedQuestion = questionDao.save(question);
 
             // 2. Générer les choix incorrects
-            List<Choix> choixIncorrects = choixDao.findIncorrectChoixByCategorie(choix.getCategorie(), choix.getId());
+            List<Choix> choixIncorrects = choixDao.findIncorrectChoixByCategorie(choix.getCategorie(), choix.getId(), nbrChoix - 1);
             List<Contenir> contenirs = new ArrayList<>();
 
             for (int i = 0; i < nbrChoix - 1; i++) { // -1 car un des choix est correct
-                int idChoixIncorrect = randomChoix(choixIncorrects.size() - 1);
-                Contenir contIncorrect = new Contenir(choixIncorrects.get(idChoixIncorrect), savedQuestion, false);
+                Contenir contIncorrect = new Contenir(choixIncorrects.get(i), savedQuestion, false);
                 contenirs.add(contIncorrect);
             }
 
             // 3. Ajouter le choix correct
             Contenir contCorrect = new Contenir(choix, savedQuestion, true);
             contenirs.add(contCorrect);
+            Collections.shuffle(contenirs);
 
             // 4. Associer les contenirs à la question
             savedQuestion.setContenirs(contenirs);

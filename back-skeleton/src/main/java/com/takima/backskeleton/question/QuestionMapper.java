@@ -1,7 +1,6 @@
-package com.takima.backskeleton.DTO;
+package com.takima.backskeleton.question;
 
-import com.takima.backskeleton.models.Contenir;
-import com.takima.backskeleton.models.Question;
+import com.takima.backskeleton.contenir.Contenir;
 
 import java.util.ArrayList;
 
@@ -16,6 +15,7 @@ public interface QuestionMapper {
             }
         }
         return QuestionDTO.builder()
+                .id(question.getId())
                 .reponses(description_reponses)
                 .image(image)
                 .build();

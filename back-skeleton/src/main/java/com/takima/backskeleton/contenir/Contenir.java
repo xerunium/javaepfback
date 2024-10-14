@@ -1,5 +1,7 @@
-package com.takima.backskeleton.models;
+package com.takima.backskeleton.contenir;
 
+import com.takima.backskeleton.choix.Choix;
+import com.takima.backskeleton.question.Question;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

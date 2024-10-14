@@ -1,7 +1,5 @@
-package com.takima.backskeleton.controllers;
+package com.takima.backskeleton.categorie;
 
-import com.takima.backskeleton.DAO.CategorieDao;
-import com.takima.backskeleton.models.Categorie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
