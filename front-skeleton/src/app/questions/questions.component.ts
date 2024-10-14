@@ -23,4 +23,8 @@ export class QuestionsComponent implements OnInit{
       this.image= question.image
     })
   }
+  onSelectAnswer(reponse: string) {
+    // Logique de validation ou navigation après la réponse
+    console.log('Réponse sélectionnée :', reponse);
+  }
 }

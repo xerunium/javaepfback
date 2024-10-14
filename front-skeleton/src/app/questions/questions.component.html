@@ -4,3 +4,14 @@
   {{reponse}}
 </li>
 </ul>
+<div class="quiz-container">
+  <div class="question-image">
+    <img [src]="'data:image/jpeg;base64,' + image" alt="Question Image" class="centered-image"/>
+  </div>
+
+  <div class="answers">
+    <button *ngFor="let reponse of reponses" (click)="onSelectAnswer(reponse)" class="answer-button">
+      {{ reponse }}
+    </button>
+  </div>
+</div>
