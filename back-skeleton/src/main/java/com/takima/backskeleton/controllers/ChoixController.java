@@ -1,16 +1,12 @@
 package com.takima.backskeleton.controllers;
 
-import com.takima.backskeleton.DAO.CategorieDao;
 import com.takima.backskeleton.DAO.ChoixDao;
-import com.takima.backskeleton.models.Categorie;
 import com.takima.backskeleton.models.Choix;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RequestMapping("/choix")
@@ -23,5 +19,10 @@ public class ChoixController {
     @GetMapping("")
     public List<Choix> findAll() {
         return choixDao.findAll();
+    }
+
+    @GetMapping("/{id_choix}")
+    public Optional<Choix> findById(@PathVariable Long id_choix) {
+        return choixDao.findById(id_choix);
     }
 }

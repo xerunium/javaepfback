@@ -41,20 +41,34 @@ public class QuestionService {
         return createQuestion(nbrChoix, choixCorrect);
     }
 
-    public Question createQuestion(int nbrChoix, Optional<Choix> choixCorrect){
-        List<Contenir> contenirs = new ArrayList<>();
-        if(choixCorrect.isPresent()){
+    public Question createQuestion(int nbrChoix, Optional<Choix> choixCorrect) {
+        if(choixCorrect.isPresent()) {
             Choix choix = choixCorrect.get();
+
+            // 1. Créer la question d'abord sans ses propositions (sans Contenir)
+            Question question = new Question();
+            question.setNb_choix(nbrChoix);
+            Question savedQuestion = questionDao.save(question);
+
+            // 2. Générer les choix incorrects
             List<Choix> choixIncorrects = choixDao.findIncorrectChoixByCategorie(choix.getCategorie(), choix.getId());
-            for(int i = 0; i < nbrChoix; i++){
-                int idChoixIncorrect = randomChoix((int) choixIncorrects.size()-1);
-                Contenir contIncorrect = new Contenir(choixIncorrects.get(idChoixIncorrect), false);
+            List<Contenir> contenirs = new ArrayList<>();
+
+            for (int i = 0; i < nbrChoix - 1; i++) { // -1 car un des choix est correct
+                int idChoixIncorrect = randomChoix(choixIncorrects.size() - 1);
+                Contenir contIncorrect = new Contenir(choixIncorrects.get(idChoixIncorrect), savedQuestion, false);
                 contenirs.add(contIncorrect);
             }
-            Contenir contCorrect = new Contenir(choix, true);
+
+            // 3. Ajouter le choix correct
+            Contenir contCorrect = new Contenir(choix, savedQuestion, true);
             contenirs.add(contCorrect);
-            Question question = new Question(nbrChoix, contenirs);
-            return questionDao.save(question);
+
+            // 4. Associer les contenirs à la question
+            savedQuestion.setContenirs(contenirs);
+
+            // 5. Sauvegarder les Contenir en cascade avec la question
+            return questionDao.save(savedQuestion);
         }
         return null;
     }

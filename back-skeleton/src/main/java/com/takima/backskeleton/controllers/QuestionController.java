@@ -9,6 +9,7 @@ import com.takima.backskeleton.models.Choix;
 import com.takima.backskeleton.models.Question;
 import com.takima.backskeleton.service.QuestionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,14 @@ public class QuestionController {
     private QuestionDao questionDao;
     private QuestionService questionService;
     private ChoixDao choixDao;
+    @Autowired
+    public QuestionController(QuestionService questionService, ChoixDao choixDao) {
+        this.questionService = questionService;
+        this.choixDao = choixDao;
+    }
+
     @GetMapping("/{nbquestions}")
-    public ArrayList<QuestionDTO> getQuestions(@RequestParam Integer nbquestions){
-        //Reprendre liste de service guilhem
+    public ArrayList<QuestionDTO> getQuestions(@PathVariable Integer nbquestions){
         List<Question> questions = questionService.generateQuestions(nbquestions, 4);
         ArrayList<QuestionDTO> questionsDTO=new ArrayList<QuestionDTO>();
         for (Question question : questions){

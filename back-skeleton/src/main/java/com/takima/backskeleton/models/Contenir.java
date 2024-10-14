@@ -23,8 +23,9 @@ public class Contenir {
     private Choix choix;
     private boolean isAnswer;
 
-    public Contenir(Choix choix, boolean isAnswer) {
+    public Contenir(Choix choix, Question question, boolean isAnswer) {
         this.choix = choix;
+        this.question = question;
         this.isAnswer = isAnswer;
     }
 }

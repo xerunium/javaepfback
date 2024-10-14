@@ -14,8 +14,7 @@ public class Choix {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Lob
-    private byte[] image;
+    private String image;
     private String description;
     @ManyToOne
     private Categorie categorie;

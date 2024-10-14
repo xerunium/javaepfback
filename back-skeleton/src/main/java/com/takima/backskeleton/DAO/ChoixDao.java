@@ -13,11 +13,11 @@ import java.util.Optional;
 @Repository
 public interface ChoixDao extends JpaRepository<Choix, Long> {
 
-    @Query("SELECT c FROM Choix c WHERE c.categorie = :categorie AND c.id != :choixId ORDER BY function('RAND')")
+    @Query("SELECT c FROM Choix c WHERE c.categorie = :categorie AND c.id != :choixId")
     List<Choix> findIncorrectChoixByCategorie(@Param("categorie") Categorie categorie,
                                               @Param("choixId") Long choixId);
 
     Optional<Choix> findByDescription(String description);
 
-    Optional<Choix> findByImage(byte[] image);
+    Optional<Choix> findByImage(String image);
 }
