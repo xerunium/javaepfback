@@ -9,5 +9,5 @@ import lombok.Setter;
 @Builder
 public class AnswerDTO {
     private String description;
-    private byte[] image;
+    private String image;
 }

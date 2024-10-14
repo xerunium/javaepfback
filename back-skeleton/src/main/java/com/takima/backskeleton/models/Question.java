@@ -19,7 +19,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int nb_choix;
-    @OneToMany
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Contenir> contenirs;
 
     public Question(int nb_choix, List<Contenir> contenirs) {
