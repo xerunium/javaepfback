@@ -1,6 +1,12 @@
 <p>Hey !!! ça va ou quoi la #team ??</p>
-<ul>
-<li *ngFor="let reponse of reponses">
-  {{reponse}}
-</li>
-</ul>
+<div>
+  <ul>
+    <li *ngFor="let reponse of reponses">
+      {{reponse}}
+    </li>
+    <li>
+      {{image}}
+    </li>
+  </ul>
+  <p *ngIf="reponses?.length === 0">Aucune réponse disponible.</p>
+</div>

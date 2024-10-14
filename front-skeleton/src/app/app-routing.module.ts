@@ -9,36 +9,17 @@ import { MajorsComponent } from "majors/majors.component"
 import { MajorsResolver } from "majors/majors.resolver"
 import { MajorStudentsResolver } from "majors/major-students/major-students.resolver"
 import { MajorStudentsComponent } from "majors/major-students/major-students.component"
+import {QuestionsComponent} from "./questions/questions.component";
+import {QuestionsResolver} from "./questions/questions.resolver";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   {
-    path: "etudiants",
-    component: StudentsComponent,
+    path: "quiz",
+    component: QuestionsComponent,
     resolve: {
-      students: StudentsResolver,
-    },
-  },
-  {
-    path: "details-etudiant/:id",
-    component: StudentDetailsComponent,
-    resolve: {
-      student: StudentDetailsResolver,
-    },
-  },
-  {
-    path: "filieres",
-    component: MajorsComponent,
-    resolve: {
-      majors: MajorsResolver,
-    },
-  },
-  {
-    path: "etudiants-filiere/:id",
-    component: MajorStudentsComponent,
-    resolve: {
-      studentsFromMajor: MajorStudentsResolver,
-    },
+      reponses : QuestionsResolver
+    }
   },
 ]
 
