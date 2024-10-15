@@ -8,7 +8,7 @@ import { QuestionModel } from '../models/question.model'
 })
 export class QuestionService {
 
-  private apiUrl = 'http://localhost:8080/questions/generate?nbquestions=1&nbChoix=3';
+  private apiUrl = 'http://localhost:8080/questions/generate?nbquestions=1&nbChoix=4';
 
   constructor(private http: HttpClient) { }
 
