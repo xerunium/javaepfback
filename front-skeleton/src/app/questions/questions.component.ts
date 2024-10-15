@@ -13,21 +13,25 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './questions.component.scss'
 })
 export class QuestionsComponent implements OnInit{
-  image: string ='';
+  image: string | undefined;
   reponses: string[] | undefined;
   questions: QuestionModel | undefined;
+  selectedReponse: string | undefined;
+
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.questions = this.route.snapshot.data["reponses"][0];
     this.reponses = this.questions?.reponses;
-    console.log(this.questions);
-    console.log(this.reponses);
-    /*this.questionService.getData().subscribe((question: QuestionModel)=>
-    {
-      this.reponses= question.reponses
-      this.image= question.image
-    })*/
+    this.image =this.questions?.image;
+  }
+
+  onSelectReponse(reponse: string) {
+    this.selectedReponse = reponse;
+  }
+
+  onSubmit() {
+
   }
 }

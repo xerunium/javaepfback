@@ -1,12 +1,26 @@
-<p>Hey !!! ça va ou quoi la #team ??</p>
-<div>
-  <ul>
-    <li *ngFor="let reponse of reponses">
-      {{reponse}}
-    </li>
-    <li>
-      {{image}}
-    </li>
-  </ul>
-  <p *ngIf="reponses?.length === 0">Aucune réponse disponible.</p>
+<div class="app-questions">
+  <div style="display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px">
+    <!-- Image centrée horizontalement avec un positionnement relatif -->
+    <img src="{{image}}" style="width:400px;height:400px;">
+
+    <!-- Bouton "Valider la réponse" centré verticalement à droite de l'image, sans décaler l'image -->
+    <button (click)="onSubmit()" style="position: absolute; right: 100px; padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Valider la réponse
+    </button>
+  </div>
+
+  <!-- Réponses sous l'image, centrées avec deux par ligne et stylisées -->
+  <div style="text-align:center; margin-top: 20px;">
+    <ul style="list-style-type: none; padding: 0;">
+      <li style="display: flex; justify-content: center; flex-wrap: wrap;">
+        <div *ngFor="let reponse of reponses" style="flex: 1 0 45%; margin: 10px; text-align: center;">
+          <label class="custom-radio">
+            <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
+            <span>{{reponse}}</span>
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
 </div>
