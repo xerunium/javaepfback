@@ -2,8 +2,31 @@
 <div>
 </div>
 <div class="card">
-  <img class="card-img-top" src="assets/img2.png" alt="Card image cap"/>
+  <img class="card-img-top" src="assets/img3.png" alt="Card image cap" />
   <div class="card-body">
     <p class="card-text">Accéder au quiz</p>
   </div>
 </div>
+<div class="user-info">
+  <h3>Entrez votre nom de famille :</h3>
+  <input [(ngModel)]="nomFamille" type="text" placeholder="Votre nom de famille" class="nom-famille-input" />
+</div>
+<div class="difficulty-selection">
+  <h3>Choisissez le niveau de difficulté :</h3>
+  <mat-button-toggle-group [(ngModel)]="selectedDifficulty" aria-label="Niveau de difficulté">
+    <mat-button-toggle value="Simple">Simple</mat-button-toggle>
+    <mat-button-toggle value="Moyen">Moyen</mat-button-toggle>
+    <mat-button-toggle value="Difficile">Difficile</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<div>
+  <p>Niveau sélectionné : {{ selectedDifficulty }}</p>
+</div>
+
+
+<section>
+  <div class="example-button-row">
+    <a mat-flat-button class="custom-button" href="https://www.google.com/" target="_blank">SupeRRR Quizzzzz</a>
+  </div>
+</section>
