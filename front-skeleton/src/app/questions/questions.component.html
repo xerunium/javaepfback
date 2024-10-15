@@ -5,17 +5,14 @@
   </div>
 
   <div style="text-align:center; margin-top: 20px;">
-    <ul style="list-style-type: none; padding: 0;">
-      <li style="display: flex; justify-content: center; flex-wrap: wrap;">
-        <div *ngFor="let reponse of reponses" style="flex: 1 0 45%; margin: 10px; text-align: center;">
-          <label class="custom-radio">
-            <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
-            <span>{{reponse}}</span>
-          </label>
-        </div>
+    <ul class="grid-container">
+      <li *ngFor="let reponse of reponses; let i = index" class="grid-item">
+        <label class="custom-radio color-{{i}}">
+          <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
+          <span>{{reponse}}</span>
+        </label>
       </li>
     </ul>
   </div>
-
 </div>
 </body>

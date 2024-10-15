@@ -22,38 +22,64 @@ body {
   text-align: center;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+}
+
 input[type="radio"] {
   display: none;
 }
 
 .custom-radio {
   margin: 0 10px;
-  background: linear-gradient(145deg, #b42e2e, #930101);
   color: white;
   border: none;
   border-radius: 25px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  padding: 60px ;
+  padding: 60px;
   font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
-
+  text-align: center;
+  width: 100%;
 }
 
 .custom-radio:hover {
-  background-color: #ad6969;
-  color: #ffffff;
   border: 5px solid #000000;
-  padding: 50px;
+  padding: 40px;
   border-radius: 25px;
 }
+
 input[type="radio"]:checked + span {
-  background-color: #ad6969;
+  background-color: rgba(238, 227, 227, 0.8);
   color: #ffffff;
   border: 5px solid #000000;
-  padding: 50px;
+  padding: 30px;
   border-radius: 25px;
 }
+.color-0 {
+  background: linear-gradient(145deg, #b42e2e, #930101);
+}
 
+.color-1 {
+  background: linear-gradient(145deg, #2e8ab4, #015793);
+}
 
+.color-2 {
+  background: linear-gradient(145deg, #b4b42e, #939301);
+}
+
+.color-3 {
+  background: linear-gradient(145deg, #2eb442, #019329);
+}
