@@ -7,10 +7,12 @@
   <div style="text-align:center; margin-top: 20px;">
     <ul class="grid-container">
       <li *ngFor="let reponse of reponses; let i = index" class="grid-item">
-        <label class="custom-radio color-{{i}}">
-          <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
-          <span>{{reponse}}</span>
-        </label>
+        <button class="custom-radio color-{{i}}"
+                type="button"
+                [class.selected]="selectedReponse === reponse"
+                (click)="onSelectReponse(reponse)">
+          {{reponse}}
+        </button>
       </li>
     </ul>
   </div>
