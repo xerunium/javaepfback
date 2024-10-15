@@ -4,6 +4,8 @@ import com.takima.backskeleton.choix.ChoixDao;
 import com.takima.backskeleton.choix.AnswerDTO;
 import com.takima.backskeleton.choix.Choix;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ public class QuestionController {
     private QuestionDao questionDao;
     private QuestionService questionService;
     private ChoixDao choixDao;
+    final static Logger logger = LoggerFactory.getLogger(QuestionController.class);
+
     @Autowired
     public QuestionController(QuestionService questionService, ChoixDao choixDao) {
         this.questionService = questionService;
@@ -41,13 +45,13 @@ public class QuestionController {
     }
 
     @PostMapping("/checkAnswer")
-    public ResponseEntity<Boolean> checkAnswer(@RequestBody AnswerDTO answerDTO){
+    public Boolean checkAnswer(@RequestBody AnswerDTO answerDTO){
         if(choixDao.findByImage(answerDTO.getImage()).isPresent()){
             Choix correctAnswer =choixDao.findByImage(answerDTO.getImage()).get();
             if (answerDTO.getDescription().equals(correctAnswer.getDescription())){
-                return ResponseEntity.ok(true);
+                return true;
             }
         }
-return ResponseEntity.ok(false);
+return false;
     }
 }
