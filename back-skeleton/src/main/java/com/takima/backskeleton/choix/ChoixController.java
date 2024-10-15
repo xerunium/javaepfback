@@ -1,7 +1,5 @@
-package com.takima.backskeleton.controllers;
+package com.takima.backskeleton.choix;
 
-import com.takima.backskeleton.DAO.ChoixDao;
-import com.takima.backskeleton.models.Choix;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

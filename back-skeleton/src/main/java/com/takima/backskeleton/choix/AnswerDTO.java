@@ -1,4 +1,4 @@
-package com.takima.backskeleton.DTO;
+package com.takima.backskeleton.choix;
 
 import lombok.Builder;
 import lombok.Getter;
