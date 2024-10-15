@@ -20,6 +20,7 @@ export class QuestionsComponent implements OnInit {
   selectedReponseDTO?: AnswerModel
   currentQuestion: number = 0
   score : number = 0
+  difficulty : string ='facile'
 
 
   constructor(private route: ActivatedRoute, private questionService: QuestionService) {
@@ -27,6 +28,7 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit() {
     if (this.currentQuestion === 0) {
+      this.getDifficulty()
       this.questionService.getData().subscribe(
         (data: QuestionModel[]) => {
           this.quiz = data;
@@ -37,7 +39,12 @@ export class QuestionsComponent implements OnInit {
       )
     }
   }
-
+  getDifficulty(){
+    this.route.queryParams.subscribe(params => {
+      this.difficulty = params['difficulty'] || this.difficulty; // Par défaut 'facile'
+      this.questionService.setDifficulty(this.difficulty);
+    })
+  }
   async onSelectReponse(selectedAnswer: string) {
     //Creation DTO pour envoi API
     this.selectedReponseDTO = {

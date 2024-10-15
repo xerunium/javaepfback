@@ -8,5 +8,5 @@ import {QuestionModel} from "../models/question.model";
 import {QuestionService} from "../services/question.service";
 
 export const QuestionsResolver: ResolveFn<any> = () => {
-  return inject(QuestionService).getData()
+  //return inject(QuestionService).getData()
 }

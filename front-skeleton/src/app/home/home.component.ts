@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core"
+import {Router} from "@angular/router";
 
 @Component({
   selector: "home",
@@ -8,7 +9,12 @@ import { Component, OnInit } from "@angular/core"
 export class HomeComponent implements OnInit {
   selectedDifficulty: string = 'Simple';
   nomFamille: string = '';
-  constructor() {}
+  constructor(private router : Router) {}
 
   ngOnInit(): void {}
+
+  startQuiz() {
+    this.router.navigate(['/quiz'], { queryParams: { difficulty: this.selectedDifficulty } });
+
+  }
 }
