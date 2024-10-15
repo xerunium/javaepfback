@@ -10,4 +10,12 @@ import lombok.Setter;
 public class AnswerDTO {
     private String description;
     private String image;
+
+    @Override
+    public String toString() {
+        return "AnswerDTO{" +
+                "description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }
