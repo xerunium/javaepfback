@@ -1,17 +1,19 @@
-<p>Hey !!! ça va ou quoi la #team ??</p>
-<ul>
-<li *ngFor="let reponse of reponses">
-  {{reponse}}
-</li>
-</ul>
-<div class="quiz-container">
-  <div class="question-image">
-    <img [src]="'data:image/jpeg;base64,' + image" alt="Question Image" class="centered-image"/>
+<div class="app-questions">
+  <div style="display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px">
+    <img src="{{image}}" style="width:400px;height:400px;">
   </div>
 
-  <div class="answers">
-    <button *ngFor="let reponse of reponses" (click)="onSelectAnswer(reponse)" class="answer-button">
-      {{ reponse }}
-    </button>
+  <div style="text-align:center; margin-top: 20px;">
+    <ul style="list-style-type: none; padding: 0;">
+      <li style="display: flex; justify-content: center; flex-wrap: wrap;">
+        <div *ngFor="let reponse of reponses" style="flex: 1 0 45%; margin: 10px; text-align: center;">
+          <label class="custom-radio">
+            <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
+            <span>{{reponse}}</span>
+          </label>
+        </div>
+      </li>
+    </ul>
   </div>
+
 </div>
