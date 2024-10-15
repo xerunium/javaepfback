@@ -59,13 +59,15 @@ export class QuestionsComponent implements OnInit {
      });
     await this.delay(3000);
      //Passage à la prochaine question si existante
+    this.update()
+  }
+  update(): void{
     if(this.quiz?.[this.currentQuestion]!=null){
       this.reponses=this.quiz?.[this.currentQuestion].reponses;
       this.currentImage=this.quiz?.[this.currentQuestion].image;
       this.currentQuestion++
     }
   }
-
   delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
