@@ -37,4 +37,3 @@ UPDATE choix SET image = ('https://i.imgur.com/WjWw1Rt.png') WHERE id=14;
 UPDATE choix SET image = ('https://i.imgur.com/LwSL2dU.png') WHERE id=15;
 UPDATE choix SET image = ('https://i.imgur.com/1HK8tVJ.png') WHERE id=16;
 UPDATE choix SET image = ('https://i.imgur.com/RmdfeoW.png') WHERE id=17;
-
