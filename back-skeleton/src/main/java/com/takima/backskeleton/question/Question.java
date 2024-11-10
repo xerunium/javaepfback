@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "qu")
     private Long id;
     private int nb_choix;
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
