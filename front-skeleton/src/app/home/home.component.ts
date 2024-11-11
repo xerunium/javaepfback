@@ -8,13 +8,13 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   selectedDifficulty: string = 'Simple';
-  nomFamille: string = '';
+  username: string = '' ;
   constructor(private router : Router) {}
 
   ngOnInit(): void {}
 
   startQuiz() {
-    this.router.navigate(['/quiz'], { queryParams: { difficulty: this.selectedDifficulty } });
+    this.router.navigate(['/quiz'], { queryParams: { difficulty: this.selectedDifficulty, username: this.username } });
 
   }
 }

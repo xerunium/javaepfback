@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser"
 import { AppRoutingModule } from "app-routing.module"
 import { AppComponent } from "app.component"
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { NavbarComponent } from "navbar/navbar.component"
 import { MatListModule } from "@angular/material/list"
 import { HomeComponent } from "home/home.component"
 import { StudentsComponent } from "students/students.component"
@@ -20,7 +19,6 @@ import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-to
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
     StudentsComponent,
     StudentDetailsComponent,

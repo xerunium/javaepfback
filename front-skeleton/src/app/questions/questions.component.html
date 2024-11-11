@@ -3,15 +3,18 @@
   <div style="display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px">
     <img src="{{currentImage}}" style="width:400px;height:400px;">
   </div>
-<div>
-  Score : {{score}}
-</div>
+  <div>
+    Score : {{ score }}
+  </div>
+  <div>
+    Temps : {{elapsedTime}}s
+  </div>
   <div style="text-align:center; margin-top: 20px;">
     <ul class="grid-container">
       <li *ngFor="let reponse of reponses; let i = index" class="grid-item">
         <label class="custom-radio color-{{i}}">
           <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
-          <span>{{reponse}}</span>
+          <span>{{ reponse }}</span>
         </label>
       </li>
     </ul>
