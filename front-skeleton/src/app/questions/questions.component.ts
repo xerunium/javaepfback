@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AnswerModel} from "../models/answer.model";
 import {LeaderboardService} from "../services/leaderboard.service";
 
+declare const useVentilateur: () => void;
 
 @Component({
   selector: 'questions',
@@ -41,6 +42,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     if (this.currentQuestion === 0) {
       this.startTimer();
       this.getDifficultyAndUsername()
+      if (this.difficulty === 'Atroce') {
+        useVentilateur();
+      }
       this.questionService.getData().subscribe(
         (data: QuestionModel[]) => {
           this.quiz = data;
@@ -88,7 +92,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     }, error => {
       console.error("Erreur lors de la vérification de la réponse : ", error);
     });
-    await this.delay(500);
+    if (this.difficulty === 'Atroce') {
+      await this.delay(2000);
+    } else {
+      await this.delay(500);
+    }
     //Passage à la prochaine question si existante
     this.update()
   }

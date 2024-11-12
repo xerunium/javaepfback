@@ -68,6 +68,7 @@ input[type="radio"]:checked + span {
   padding: 30px;
   border-radius: 25px;
 }
+
 .color-0 {
   background: linear-gradient(145deg, #b42e2e, #930101);
 }
@@ -82,4 +83,33 @@ input[type="radio"]:checked + span {
 
 .color-3 {
   background: linear-gradient(145deg, #2eb442, #019329);
+}
+
+#cursor, #fan {
+  display: none;
+}
+
+#fan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6rem;
+  cursor: grab;
+  z-index: 10;
+}
+
+#fan:active {
+  cursor: grabbing;
+}
+
+#cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5rem;
+  z-index: 10;
+}
+
+#cursor, #fan, #keyboard {
+  user-select: none;
 }

@@ -1,4 +1,9 @@
+<head>
+  <script src="assets/js/ventilateurScript.js"></script>
+</head>
 <body>
+<img id="cursor" src="./assets/cursor.png" draggable="false">
+<img id="fan" src="./assets/fan.png" draggable="true">
 <div class="app-questions">
   <div style="display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px">
     <img src="{{currentImage}}" style="width:400px;height:400px;">
@@ -7,7 +12,7 @@
     Score : {{ score }}
   </div>
   <div>
-    Temps : {{elapsedTime}}s
+    Temps : {{ elapsedTime }}s
   </div>
   <div style="text-align:center; margin-top: 20px;">
     <ul class="grid-container">
