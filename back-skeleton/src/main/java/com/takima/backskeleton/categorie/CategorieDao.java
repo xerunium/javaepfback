@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface CategorieDao extends JpaRepository<Categorie, Long> {
 
     public Categorie findCategorieByNomCategorie(String name);
-
-}
+    public Categorie findCategorieById(Long id);
+    }

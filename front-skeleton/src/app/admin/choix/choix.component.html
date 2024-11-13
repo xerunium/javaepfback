@@ -1,1 +1,119 @@
-<p>choix works!</p>
+<h1>Gestion des Items</h1>
+
+<!-- Bouton pour ouvrir le modal de création d'un nouvel item -->
+<div class="mb-3">
+  <button class="btn btn-warning" (click)="openCreateModal()">Nouveau Choix</button>
+</div>
+
+<!-- Tableau pour afficher les items -->
+<div class="m-lg-3">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Boucle pour afficher chaque item -->
+    <tr *ngFor="let item of listChoix; trackBy: trackById">
+      <th scope="row">{{ item.id }}</th>
+      <!-- Affichage de l'image en utilisant une balise <img> -->
+      <td>
+        <img [src]="item.image" alt="Image de l'item" style="width: 50px; height: 50px;">
+      </td>
+      <!-- Description de l'item -->
+      <td>{{ item.description }}</td>
+      <!-- Nom de la catégorie de l'item -->
+      <td>{{ item.categorie?.nomCategorie }}</td>
+      <td>
+        <!-- Bouton pour supprimer l'item -->
+        <button type="button" class="btn btn-danger" (click)="deleteChoix(item.id)">
+          <i class="bi bi-trash"></i>
+        </button>
+        <!-- Bouton pour ouvrir le modal de modification -->
+        <button type="button" class="btn btn-secondary" (click)="openModal(item)">
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal pour créer un nouvel item -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'd-block': showCreateModal, 'd-none': !showCreateModal }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nouvel Item</h5>
+        <button type="button" class="btn-close" (click)="closeCreateModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire pour les informations de l'item -->
+
+        <!-- Champ pour l'URL de l'image -->
+        <div class="d-flex flex-column mt-1">
+          <label for="image">URL de l'Image</label>
+          <input class="form-control" type="text" id="image" [(ngModel)]="newChoix.image">
+        </div>
+
+        <!-- Champ pour la description -->
+        <div class="d-flex flex-column mt-2">
+          <label for="description">Description</label>
+          <input class="form-control" type="text" id="description" [(ngModel)]="newChoix.description">
+        </div>
+
+        <div class="d-flex flex-column mt-2">
+          <label for="categorie">Catégorie</label>
+          <select class="form-select" id="categorie" [(ngModel)]="newChoix.categorie">
+            <option *ngFor="let categorie of categories" [ngValue]="categorie">
+              {{ categorie.nomCategorie }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeCreateModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="createChoix()">Créer l'Item</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour modifier un choix -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'd-block': showModal, 'd-none': !showModal }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier le Choix</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Champ pour la description -->
+        <div class="d-flex flex-column mt-1">
+          <label for="description">Description</label>
+          <input class="form-control" type="text" id="descriptionUp" [(ngModel)]="selectedChoix.description">
+        </div>
+
+        <!-- Liste déroulante pour choisir la catégorie -->
+        <div class="d-flex flex-column mt-2">
+          <label for="categorie">Catégorie</label>
+          <select class="form-select" id="categorieUp" [(ngModel)]="selectedChoix.categorie">
+            <option *ngFor="let categorie of categories" [ngValue]="categorie">
+              {{ categorie.nomCategorie }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Enregistrer les modifications</button>
+      </div>
+    </div>
+  </div>
+</div>
+

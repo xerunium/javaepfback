@@ -25,14 +25,19 @@ public class ChoixController {
         return choixService.findById(id_choix);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam Long choix_id) {
-        choixService.deleteById(choix_id);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        choixService.deleteById(id);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Choix> updateChoix(@PathVariable Long id, @RequestBody Choix choixDetails) {
         Choix updatedChoix = choixService.updateChoix(id, choixDetails);
         return ResponseEntity.ok(updatedChoix);
+    }
+
+    @PostMapping("")
+    public void createChoix(@RequestBody Choix choixDetails) {
+        choixService.createChoix(choixDetails);
     }
 }

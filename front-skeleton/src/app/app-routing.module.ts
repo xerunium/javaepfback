@@ -4,7 +4,7 @@ import {HomeComponent} from "home/home.component"
 import {QuestionsComponent} from "./questions/questions.component";
 import {QuestionsResolver} from "./questions/questions.resolver";
 import {AdminComponent} from "./admin/admin.component";
-import {CategoriesComponent} from "./admin/categories/categories.component";
+import {Categories} from "./admin/categories/categories.component";
 import {ChoixComponent} from "./admin/choix/choix.component";
 import {LeaderboardComponent} from "./leaderboard/leaderboard.component";
 
@@ -27,15 +27,16 @@ const routes: Routes = [
     children: [
       {
         path: 'categories',
-        component: CategoriesComponent,
+        component: Categories,
       },
       {
         path: 'choix',
         component: ChoixComponent,
-      },
-    ],
-  }
-]
+      }
+    ]
+  },
+  { path: '**', redirectTo: 'admin' } // Redirection en cas de route inconnue
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

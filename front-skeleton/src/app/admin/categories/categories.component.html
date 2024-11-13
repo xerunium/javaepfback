@@ -1,1 +1,83 @@
-<p>categories works!</p>
+<h1>Gestion des Catégories</h1>
+
+<!-- Bouton pour ajouter une nouvelle catégorie -->
+<div class="mb-3">
+  <button class="btn btn-warning" (click)="openCreateModal()">Nouvelle Catégorie</button>
+</div>
+
+<!-- Tableau pour afficher les catégories -->
+<div class="m-lg-3">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom de la Catégorie</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Boucle pour afficher chaque catégorie -->
+    <tr *ngFor="let category of categories; trackBy: trackById">
+      <th scope="row">{{ category.id }}</th>
+      <!-- Utilisation de l'opérateur de sécurité -->
+      <td>{{ category?.nomCategorie }}</td>
+      <td>
+        <!-- Bouton pour supprimer une catégorie -->
+        <button type="button" class="btn btn-danger" (click)="deleteCategory(category.id)">
+          <i class="bi bi-trash"></i>
+        </button>
+        <!-- Bouton pour ouvrir le modal de modification -->
+        <button type="button" class="btn btn-secondary" (click)="openModal(category)">
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal pour modifier une catégorie -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'd-block': showModal, 'd-none': !showModal }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier la Catégorie</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column mt-1">
+          <label for="nomCategorie">Nom de la Catégorie</label>
+          <input class="form-control" type="text" id="nomCategorieDetails" [(ngModel)]="selectedCategory.nomCategorie">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Enregistrer les modifications</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour créer une nouvelle catégorie -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'd-block': showCreateModal, 'd-none': !showCreateModal }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nouvelle Catégorie</h5>
+        <button type="button" class="btn-close" (click)="closeCreateModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column mt-1">
+          <label for="nomCategorie">Nom de la Catégorie</label>
+          <input class="form-control" type="text" id="nomCategorie" [(ngModel)]="newCategory.nomCategorie">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeCreateModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="createCategory()">Créer la Catégorie</button>
+      </div>
+    </div>
+  </div>
+</div>
+

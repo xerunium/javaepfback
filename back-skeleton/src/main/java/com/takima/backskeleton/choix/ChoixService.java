@@ -14,18 +14,6 @@ public class ChoixService {
 
     private final ChoixDao choixDao;
 
-    public List<Choix> findIncorrectChoixByCategorie(Categorie categorie, Long choixId, int nbrChoix) {
-        return choixDao.findIncorrectChoixByCategorie(categorie, choixId, nbrChoix);
-    }
-
-    public Optional<Choix> findByDescription(String description) {
-        return choixDao.findByDescription(description);
-    }
-
-    public Optional<Choix> findByImage(String image) {
-        return choixDao.findByImage(image);
-    }
-
     public List<Choix> findAll() {
         return choixDao.findAll();
     }
@@ -47,5 +35,9 @@ public class ChoixService {
         choix.setImage(choixDetails.getImage());
         choix.setCategorie(choixDetails.getCategorie());
         return choix;
+    }
+
+    public void createChoix(Choix choixDetails) {
+        choixDao.save(choixDetails);
     }
 }
