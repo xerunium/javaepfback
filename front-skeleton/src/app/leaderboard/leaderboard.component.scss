@@ -1,0 +1,97 @@
+
+
+  .leaderboard-container {
+  width: 80%;
+
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 40px rgba(238, 4, 4, 0.51);
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.leaderboard-title {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #d90a0a;
+}
+
+.leaderboard-list {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  gap: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.leaderboard-item {
+  display: contents;
+}
+
+.leaderboard-position {
+  padding: 6px 12px;
+  border-radius: 50%;
+  background-color: #f53036;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.leaderboard-item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px 0;
+  font-weight: bold;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.leaderboard-header span {
+  padding: 10px 0;
+}
+
+.leaderboard-item .username {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+}
+
+.leaderboard-item .score,
+.leaderboard-item .temps {
+  font-size: 1em;
+  color: #555;
+}
+
+.leaderboard-item:first-child {
+  font-weight: bold;
+  color: #2d87f0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .leaderboard-container {
+    width: 95%;
+  }
+
+  .leaderboard-list {
+    grid-template-columns: 1fr;
+  }
+}
+

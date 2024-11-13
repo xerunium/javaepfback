@@ -1,7 +1,20 @@
-<li *ngFor="let scores of leaderboard;">
-  <div>
-    {{ scores.username }}
-    {{ scores.score }}
-    {{ scores.temps }}
+<body>
+<div class="leaderboard-container">
+  <div class="leaderboard-title">Leaderboard</div>
+  <div class="leaderboard-header">
+    <span>Position</span>
+    <span>Username</span>
+    <span>Score</span>
+    <span>Temps</span>
   </div>
-</li>
+
+  <ul class="leaderboard-list">
+    <li *ngFor="let scores of leaderboard; let i = index" class="leaderboard-item">
+      <div class="leaderboard-position">{{ i + 1 }}</div>
+      <span class="username">{{ scores.username }}</span>
+      <span class="score">{{ scores.score }}</span>
+      <span class="temps">{{ scores.temps }}s</span>
+    </li>
+  </ul>
+</div>
+</body>
