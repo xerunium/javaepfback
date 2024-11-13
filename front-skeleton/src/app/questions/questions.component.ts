@@ -17,26 +17,32 @@ declare const useVentilateur: () => void;
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   currentImage: string = "";
-  reponses?: string[]
-  quiz?: QuestionModel[]
-  selectedReponseDTO?: AnswerModel
-  currentQuestion: number = 0
-  score: number = 0
-  difficulty: string = 'facile'
-  username: string = 'user'
+  reponses?: string[];
+  quiz?: QuestionModel[];
+  selectedReponseDTO?: AnswerModel;
+  currentQuestion: number = 0;
+  score: number = 0;
+  difficulty: string = 'facile';
+  username: string = 'user';
   elapsedTime: number = 0;
   private timer: any;
 
+  // Variables pour le suivi des réponses
+  selectedAnswerIndex: number | null = null;
+  correctAnswerIndex: number | null = null;
+  isAnswered: boolean = false;
 
-  constructor(private route: ActivatedRoute,
-              private questionService: QuestionService,
-              private leaderboardService: LeaderboardService,
-              private router: Router) {
-  }
+  // Images de feedback
+  feedbackImage: string | null = null;
+  correctFeedbackImage = 'assets/well-done.png';
+  incorrectFeedbackImage = 'assets/Wrong-Logo.png';
 
-  ngOnDestroy(): void {
-    this.stopTimer();
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private questionService: QuestionService,
+    private leaderboardService: LeaderboardService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     if (this.currentQuestion === 0) {
@@ -48,12 +54,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       this.questionService.getData().subscribe(
         (data: QuestionModel[]) => {
           this.quiz = data;
-          this.reponses = this.quiz?.[0].reponses
-          this.currentImage = this.quiz?.[0].image
-          this.currentQuestion++
+          this.reponses = this.quiz?.[0].reponses;
+          this.currentImage = this.quiz?.[0].image;
+          this.currentQuestion++;
         }
       )
     }
+  }
+
+  ngOnDestroy(): void {
+    this.stopTimer();
   }
 
   startTimer() {
@@ -74,8 +84,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     })
   }
 
-  async onSelectReponse(selectedAnswer: string) {
-    //Creation DTO pour envoi API
+  async onSelectReponse(selectedAnswer: string, index: number) {
+    this.isAnswered = true;
+    this.selectedAnswerIndex = index;
+
+    // Création du DTO pour l'envoi à l'API
     this.selectedReponseDTO = {
       description: selectedAnswer,
       image: this.currentImage
@@ -86,26 +99,36 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       if (result) {
         this.score++;
         console.log("Réponse correcte ! Score : ", this.score);
+        this.correctAnswerIndex = index;
+        this.feedbackImage = this.correctFeedbackImage; // Affiche l'image de feedback correcte
       } else {
         console.log("Réponse incorrecte.");
+        this.correctAnswerIndex = this.findCorrectAnswerIndex();
+        this.feedbackImage = this.incorrectFeedbackImage; // Affiche l'image de feedback incorrecte
       }
     }, error => {
       console.error("Erreur lors de la vérification de la réponse : ", error);
     });
     if (this.difficulty === 'Atroce') {
-      await this.delay(2000);
+      await this.delay(4000);
     } else {
-      await this.delay(500);
+      await this.delay(3000);
     }
     //Passage à la prochaine question si existante
     this.update()
+  }
+  findCorrectAnswerIndex(): number {
+    return this.quiz?.[this.currentQuestion - 1].reponses.findIndex(r => r === this.quiz?.[this.currentQuestion - 1].bonneReponse) || 0;
   }
 
   async update(): Promise<void> {
     if (this.quiz?.[this.currentQuestion] != null) {
       this.reponses = this.quiz?.[this.currentQuestion].reponses;
       this.currentImage = this.quiz?.[this.currentQuestion].image;
-      this.currentQuestion++
+      this.currentQuestion++;
+      this.selectedAnswerIndex = null;
+      this.isAnswered = false;
+      this.feedbackImage = null;  // Réinitialise l'image de feedback pour la prochaine question
     } else {
       this.leaderboardService.saveLeaderboard(this.username, this.score, this.elapsedTime);
       this.stopTimer();

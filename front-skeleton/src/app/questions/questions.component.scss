@@ -8,7 +8,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgba(84, 79, 79, 0.85);
+  background: rgba(231, 227, 227, 0.85);
 }
 
 body {
@@ -61,20 +61,13 @@ input[type="radio"] {
   border-radius: 25px;
 }
 
-input[type="radio"]:checked + span {
-  background-color: rgba(238, 227, 227, 0.8);
-  color: #ffffff;
-  border: 5px solid #000000;
-  padding: 30px;
-  border-radius: 25px;
-}
 
 .color-0 {
-  background: linear-gradient(145deg, #b42e2e, #930101);
+  background: linear-gradient(145deg, #b45910, #a86230);
 }
 
 .color-1 {
-  background: linear-gradient(145deg, #2e8ab4, #015793);
+  background: linear-gradient(145deg, #1527a8, #015793);
 }
 
 .color-2 {
@@ -82,7 +75,37 @@ input[type="radio"]:checked + span {
 }
 
 .color-3 {
+  background: linear-gradient(145deg, rgba(81, 15, 141, 0.53), rgba(129, 15, 224, 0.76));
+}
+.color-false {
+  background: linear-gradient(145deg, #b42e2e, #930101);
+}
+
+.color-true {
   background: linear-gradient(145deg, #2eb442, #019329);
+}
+.color-wrong {
+  background: linear-gradient(145deg, #790204, #600101);
+}
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Superpose au reste du contenu */
+}
+
+.feedback-image {
+  width: 200px; /* Taille agrandie */
+  height: auto;
+  max-width: 80vw; /* Limite de taille pour les écrans plus petits */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #cursor, #fan {

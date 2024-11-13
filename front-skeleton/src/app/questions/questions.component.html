@@ -14,12 +14,22 @@
   <div>
     Temps : {{ elapsedTime }}s
   </div>
+  <div *ngIf="feedbackImage" class="feedback-overlay">
+    <img [src]="feedbackImage" class="feedback-image">
+  </div>
   <div style="text-align:center; margin-top: 20px;">
     <ul class="grid-container">
       <li *ngFor="let reponse of reponses; let i = index" class="grid-item">
-        <label class="custom-radio color-{{i}}">
-          <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse)">
-          <span>{{ reponse }}</span>
+        <label
+          class="custom-radio color-{{i}}"
+          [ngClass]="{
+            'color-true': (isAnswered && i === correctAnswerIndex) || (isAnswered && i !== selectedAnswerIndex && i === correctAnswerIndex),
+            'color-false': isAnswered && i !== correctAnswerIndex,
+
+          }"
+        >
+          <input type="radio" name="reponse" [value]="reponse" (change)="onSelectReponse(reponse, i)">
+          <span>{{reponse}}</span>
         </label>
       </li>
     </ul>
