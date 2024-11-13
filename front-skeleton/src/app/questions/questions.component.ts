@@ -110,9 +110,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       console.error("Erreur lors de la vérification de la réponse : ", error);
     });
     if (this.difficulty === 'Atroce') {
-      await this.delay(4000);
+      await this.delay(1000);
     } else {
-      await this.delay(3000);
+      await this.delay(1000);
     }
     //Passage à la prochaine question si existante
     this.update()
