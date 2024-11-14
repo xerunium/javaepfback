@@ -1,22 +1,22 @@
-<span class="title">Bienvenue au MegaSuperQuizDeOuf</span>
+<div class="component-wrapper" [ngStyle]="{'background-image': background}">
+  <span class="title">Bienvenue au MegaSuperQuizDeOuf</span>
 
-<div class="user-info">
-  <input [(ngModel)]="username" type="text" placeholder="Pseudo" class="pseudo-input"/>
-</div>
-
-
-
-<div class="difficulty-selection">
-  <h3>Difficulté :</h3>
-  <mat-button-toggle-group [(ngModel)]="selectedDifficulty" aria-label="Niveau de difficulté" [ngStyle]="{'background-image': background} ">
-    <mat-button-toggle value="Simple">Simple</mat-button-toggle>
-    <mat-button-toggle value="Moyen">Moyen</mat-button-toggle>
-    <mat-button-toggle value="Atroce">Atroce</mat-button-toggle>
-  </mat-button-toggle-group>
-</div>
-
-<section>
-  <div class="example-button-row">
-    <button mat-flat-button class="custom-button" (click)="startQuiz()">Lancer le Quiz</button>
+  <div class="user-info">
+    <input [(ngModel)]="username" type="text" placeholder="Pseudo" class="pseudo-input" />
   </div>
-</section>
+
+  <div class="difficulty-selection">
+    <h3>Difficulté :</h3>
+    <mat-button-toggle-group [(ngModel)]="selectedDifficulty" (ngModelChange)="updateBackground()" aria-label="Niveau de difficulté">
+      <mat-button-toggle value="Simple">Simple</mat-button-toggle>
+      <mat-button-toggle value="Moyen">Moyen</mat-button-toggle>
+      <mat-button-toggle value="Atroce">Atroce</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <section>
+    <div class="example-button-row">
+      <button mat-flat-button class="custom-button" (click)="startQuiz()">Lancer le Quiz</button>
+    </div>
+  </section>
+</div>
