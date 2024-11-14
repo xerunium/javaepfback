@@ -3,18 +3,22 @@
   align-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url('https://media.istockphoto.com/id/1136653848/vector/neon-question-mark-frame-quiz-lighting-interrogation-point-red-neon-lamp-on-bricks-wall.jpg?s=612x612&w=0&k=20&c=U9XYWq1oSRgXJ2PL_Ixy5Az_MBajAzUnrcoN0oQliRM=');
   background-size: cover;
+  background-color: #1b0325;
   background-position: center;
   color: white;
+  font-family: "Helvetica Neue", sans-serif;
+  height: 100%;
 
-
+.body{
+  background-image: url("https://static.actu.fr/uploads/2021/03/13807881863-639a90e969-o.jpg");
+}
   .user-info {
     margin-top: 10px;
     text-align: center;
   }
 
-  .nom-famille-input {
+  .pseudo-input {
     padding: 10px;
     font-size: 1.2em;
     border: 2px solid #444444;
@@ -35,13 +39,15 @@
     border-radius: 7px;
     text-decoration: none;
     transition: background-color 0.6s;
+    margin-top: 60px;
   }
 
   .custom-button:hover {
     background-color: #e02c32;
   }
   .difficulty-selection {
-    margin-top: 20px;
+    margin-top: 100px;
+    text-align: center;
   }
 
   mat-button-toggle-group {
@@ -78,11 +84,11 @@
 
 
   .title {
-    font-family: Caveat, sans-serif;
     font-size: 4.5em;
     font-weight: 700;
-    margin: 150px 0;
-    color: white;
+    margin-top: 150px ;
+    margin-bottom: 100px;
+    color: #d3d3d3;
 
 
   }
@@ -94,31 +100,5 @@
     font-size: x-large;
     color: white;
 
-  }
-
-  .card {
-    margin-top: 30px;
-    border: none;
-    display: flex;
-    align-items: center;
-    background: transparent;
-
-
-    img {
-      height: 20%;
-      width: 20%;
-      margin-left: 20px;
-    }
-
-    .card-text {
-      font-family: "Dancing Script", sans-serif;
-      font-size: x-large;
-      margin-top: 0;
-
-      line-height: 1.7;
-      max-width: 400px;
-      margin-left: 15px;
-      color: white;
-    }
   }
 }

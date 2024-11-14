@@ -1,31 +1,22 @@
-<span class="title">Bienvenue au MegaSuperQuizDeOuf !</span>
-<div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <p class="card-text">Démarrer le quiz</p>
-  </div>
-</div>
+<span class="title">Bienvenue au MegaSuperQuizDeOuf</span>
+
 <div class="user-info">
-  <h3>Entrez pseudo :</h3>
-  <input [(ngModel)]="username" type="text" placeholder="Pseudo" class="nom-famille-input"/>
+  <input [(ngModel)]="username" type="text" placeholder="Pseudo" class="pseudo-input"/>
 </div>
+
+
+
 <div class="difficulty-selection">
-  <h3>Choisissez le niveau de difficulté :</h3>
-  <mat-button-toggle-group [(ngModel)]="selectedDifficulty" aria-label="Niveau de difficulté">
+  <h3>Difficulté :</h3>
+  <mat-button-toggle-group [(ngModel)]="selectedDifficulty" aria-label="Niveau de difficulté" [ngStyle]="{'background-image': background} ">
     <mat-button-toggle value="Simple">Simple</mat-button-toggle>
     <mat-button-toggle value="Moyen">Moyen</mat-button-toggle>
     <mat-button-toggle value="Atroce">Atroce</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 
-<div>
-  <p >Niveau sélectionné : {{ selectedDifficulty }}</p>
-</div>
-
-
 <section>
   <div class="example-button-row">
-    <button mat-flat-button class="custom-button" (click)="startQuiz()">SupeRRR Quizzzzz</button>
+    <button mat-flat-button class="custom-button" (click)="startQuiz()">Lancer le Quiz</button>
   </div>
 </section>
