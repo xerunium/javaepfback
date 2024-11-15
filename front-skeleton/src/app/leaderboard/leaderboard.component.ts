@@ -3,31 +3,28 @@ import {LeaderboardService} from "../services/leaderboard.service";
 import {LeaderboardModel} from "../models/leaderboard.model";
 import {QuestionModel} from "../models/question.model";
 import {NgForOf} from "@angular/common";
+import { MatButton } from "@angular/material/button"
 
 @Component({
-  selector: 'leaderboard',
+  selector: "leaderboard",
   standalone: true,
-  imports: [
-    NgForOf
-  ],
-  templateUrl: './leaderboard.component.html',
-  styleUrl: './leaderboard.component.scss'
+  imports: [NgForOf, MatButton],
+  templateUrl: "./leaderboard.component.html",
+  styleUrl: "./leaderboard.component.scss",
 })
 export class LeaderboardComponent implements OnInit {
   leaderboard: LeaderboardModel[] = []
 
-  constructor(private leaderboardService: LeaderboardService) {
-  }
+  constructor(private leaderboardService: LeaderboardService) {}
 
   ngOnInit(): void {
     this.leaderboardService.getLeaderboard().subscribe(
       (data: LeaderboardModel[]) => {
-        this.leaderboard = data;
+        this.leaderboard = data
       },
       (error) => {
-        console.error("Impossible de récupérer le leaderboard", error);
-      }
-    );
+        console.error("Impossible de récupérer le leaderboard", error)
+      },
+    )
   }
-
 }

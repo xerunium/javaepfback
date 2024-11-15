@@ -7,14 +7,14 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  selectedDifficulty: string = "Simple";
+  selectedDifficulty: string = "";
   username: string = "";
   background: string = "";
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.updateBackground();  // Initialise l'arrière-plan au chargement
+    this.updateBackground();
   }
 
   updateBackground() {

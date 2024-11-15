@@ -23,7 +23,7 @@ public class LeaderboardService {
     public List<Leaderboard> getLeaderboard() {
         PageRequest pageRequest = PageRequest.of(0, 10,
                 Sort.by(Sort.Order.desc("score"), Sort.Order.asc("temps")));
-        return leaderboardDao.findTop10Leaderboard();
+        return leaderboardDao.findTop10Leaderboard(pageRequest);
     }
 
 }

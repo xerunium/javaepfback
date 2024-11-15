@@ -9,7 +9,7 @@ import {AnswerModel} from "../models/answer.model";
 })
 export class QuestionService {
 
-  private apiGet = 'http://localhost:8080/questions/generate?nbquestions=2&nbChoix=';
+  private apiGet = 'http://localhost:8080/questions/generate?nbquestions=10&nbChoix=';
   private apiPost = 'http://localhost:8080/questions/checkAnswer'
   private nbChoix: number = 2
 
