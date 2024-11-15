@@ -136,3 +136,22 @@ input[type="radio"] {
 #cursor, #fan, #keyboard {
   user-select: none;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+  height: 400px;
+  margin: auto;
+}
+
+.image {
+  max-height: 400px;
+  min-height: 200px;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+

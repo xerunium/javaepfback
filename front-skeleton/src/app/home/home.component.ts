@@ -34,8 +34,14 @@ export class HomeComponent implements OnInit {
   }
 
   startQuiz() {
+    if(this.username.trim() === "" ){
+      this.router.navigate(["/quiz"], {
+        queryParams: { difficulty: this.selectedDifficulty, username: "Anonymous" },
+      });
+    }else{
     this.router.navigate(["/quiz"], {
       queryParams: { difficulty: this.selectedDifficulty, username: this.username },
     });
+    }
   }
 }
