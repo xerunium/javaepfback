@@ -4,8 +4,6 @@ services:
     container_name: api_database
     image: postgres
     restart: always
-    env_file:
-      - .env
     environment:
       POSTGRES_USER : ${DATABASE_USER:-root}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-root}
